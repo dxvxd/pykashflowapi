@@ -9,7 +9,8 @@ class SampleKfObject(KfObject):
         'integer': int,
         'string': str,
         'float': float,
-        'decimal': Decimal
+        'decimal': Decimal,
+        'list': list
     }
 
 
@@ -61,6 +62,10 @@ class TestKfObject(unittest.TestCase):
     def test_type_decimal(self):
         sample_kf_obj = SampleKfObject({'decimal': Decimal(0)})
         self.assertIsInstance(sample_kf_obj['decimal'], Decimal)
+
+    def test_type_list(self):
+        sample_kf_obj = SampleKfObject({'list': []})
+        self.assertIsInstance(sample_kf_obj['list'], list)
 
 
 if __name__ == '__main__':
