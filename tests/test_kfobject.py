@@ -5,12 +5,12 @@ from pykashflowapi.kfobjects.kfobject import KfObject
 
 class SampleKfObject(KfObject):
     _items = {
-        'boolean': bool,
-        'integer': int,
-        'string': str,
-        'float': float,
-        'decimal': Decimal,
-        'list': list
+        'boolean': False,
+        'integer': 0,
+        'string': '',
+        'float': 0.0,
+        'decimal': Decimal(0),
+        'list': []
     }
 
 
