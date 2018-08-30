@@ -43,6 +43,10 @@ class TestKfObject(unittest.TestCase):
         sample_kf_obj = SampleKfObject({'boolean': True})
         self.assertTrue(sample_kf_obj.get('boolean', False))
 
+    def test_getting_default_value(self):
+        sample_kf_obj = SampleKfObject()
+        self.assertEqual(SampleKfObject._items['decimal'], sample_kf_obj.get('decimal', None))
+
     def test_getting_unset_item(self):
         sample_kf_obj = SampleKfObject()
         with self.assertRaises(KeyError):
