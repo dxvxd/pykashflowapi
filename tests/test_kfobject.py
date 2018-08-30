@@ -13,13 +13,27 @@ class SampleKfObject(KfObject):
         'list': []
     }
 
+    _additional_items = {
+        'extra': None
+    }
+
 
 class TestKfObject(unittest.TestCase):
 
-    def test_setting_not_existing_key(self):
+    def test_setting_not_existing_parameter(self):
         kf_obj = KfObject()
         with self.assertRaises(KeyError):
             kf_obj['a'] = True
+
+    def test_setting_required_parameter(self):
+        sample_kf_obj = SampleKfObject()
+        sample_kf_obj['boolean'] = True
+        self.assertTrue(sample_kf_obj.get('boolean', False))
+
+    def test_setting_non_required_parameter(self):
+        sample_kf_obj = SampleKfObject()
+        sample_kf_obj['extra'] = True
+        self.assertTrue(sample_kf_obj.get('extra', False))
 
     def test_init_with_not_existing_key(self):
         with self.assertRaises(KeyError):
@@ -32,7 +46,7 @@ class TestKfObject(unittest.TestCase):
     def test_getting_unset_item(self):
         sample_kf_obj = SampleKfObject()
         with self.assertRaises(KeyError):
-            t = sample_kf_obj['boolean']
+            t = sample_kf_obj['extra']
 
     def test_set_wrong_type(self):
         sample_kf_obj = SampleKfObject()

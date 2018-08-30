@@ -10,10 +10,10 @@ class TestKfInvoice(unittest.TestCase):
         kf_invoice = KfInvoice()
         self.assertIsInstance(kf_invoice, KfObject)
 
-    def test_add_line_with_no_values(self):
-        kf_invoice = KfInvoice({'Lines': [], 'NetAmount': Decimal(0), 'VATAmount': Decimal(0)})
-        with self.assertRaises(KeyError):
-            kf_invoice.add_line(KfInvoiceLine({}))
+    # def test_add_line_with_no_values(self):
+    #     kf_invoice = KfInvoice({'Lines': [], 'NetAmount': Decimal(0), 'VATAmount': Decimal(0)})
+    #     with self.assertRaises(KeyError):
+    #         kf_invoice.add_line(KfInvoiceLine({}))
 
     def test_add_line_sort(self):
         kf_invoice = KfInvoice({'Lines': [], 'NetAmount': Decimal(0), 'VATAmount': Decimal(0)})
