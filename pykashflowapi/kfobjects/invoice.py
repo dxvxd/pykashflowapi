@@ -18,9 +18,6 @@ class KfInvoiceLine(KfObject):
                                # the Rate and VatAmount values in that currency then 1, else 0
     }
 
-    def get_net(self):
-        return self['Rate'] * self['Quantity']
-
 
 class KfInvoice(KfObject):
     _items = {
@@ -40,9 +37,3 @@ class KfInvoice(KfObject):
         "AmountPaid": 0,
         "UseCustomDeliveryAddress": False,
     }
-
-    def add_line(self, line):
-        self['Lines'].append(line)
-        self['NetAmount'] += line.get_net()
-        self['VATAmount'] += line['VatAmount']
-        line['Sort'] = len(self['Lines'])
