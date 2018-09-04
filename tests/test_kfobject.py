@@ -14,7 +14,7 @@ class SampleKfObject(KfObject):
     }
 
     _additional_items = {
-        'extra': None
+        'extra': False
     }
 
 
@@ -33,7 +33,7 @@ class TestKfObject(unittest.TestCase):
     def test_setting_non_required_parameter(self):
         sample_kf_obj = SampleKfObject()
         sample_kf_obj['extra'] = True
-        self.assertTrue(sample_kf_obj.get('extra', False))
+        self.assertTrue(sample_kf_obj.get('extra', None))
 
     def test_init_with_not_existing_key(self):
         with self.assertRaises(KeyError):

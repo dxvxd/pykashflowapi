@@ -17,6 +17,9 @@ class KfObject(UserDict):
             raise KeyError('Key not defined')
         if key in self._items.keys() and not isinstance(item, type(self._items.get(key))):
             raise ValueError('Not right type of value. Need {}, but got {}'.format(type(self._items[key]), type(item)))
+        if key in self._additional_items.keys() and not isinstance(item, type(self._additional_items.get(key))):
+            raise ValueError('Not right type of value. Need {}, but got {}'.format(
+                type(self._additional_items[key]), type(item)))
         super().__setitem__(key, item)
 
 
