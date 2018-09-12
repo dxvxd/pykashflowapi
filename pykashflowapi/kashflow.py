@@ -1,5 +1,5 @@
 from .soapservice import KashflowSoapService
-from .exceptions import KashflowSoapException, KashflowException
+from .exceptions import KashflowSoapException
 
 
 class Kashflow:
